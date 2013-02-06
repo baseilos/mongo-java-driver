@@ -19,14 +19,14 @@
 package org.bson;
 
 // BSON
-import org.bson.types.ObjectId;
-
-// Java
-import java.util.Map;
-import java.util.Set;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
+
+import org.bson.types.ObjectId;
+// Java
 
 /**
  * A simple implementation of <code>DBObject</code>.
@@ -272,15 +272,6 @@ public class BasicBSONObject extends LinkedHashMap<String,Object> implements BSO
         return (foo != null) ? (Date)foo : def;
     }
 
-    /** Add a key/value pair to this object
-     * @param key the field name
-     * @param val the field value
-     * @return the <code>val</code> parameter
-     */
-    public Object put( String key , Object val ){
-        return super.put( key , val );
-    }
-
     @SuppressWarnings("unchecked")
     public void putAll( Map m ){
         for ( Map.Entry entry : (Set<Map.Entry>)m.entrySet() ){
@@ -301,7 +292,6 @@ public class BasicBSONObject extends LinkedHashMap<String,Object> implements BSO
      */
     public BasicBSONObject append( String key , Object val ){
         put( key , val );
-
         return this;
     }
 
